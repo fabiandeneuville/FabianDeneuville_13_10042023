@@ -1,0 +1,61 @@
+.signInForm {
+
+    &__container {
+        margin-top: 50px;
+        padding: 25px;
+        width: 250px;
+        height: 325px;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__form {
+
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        label, input:not([type="checkbox"]), button {
+            display: block;
+            width: 100%;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input:not([type="checkbox"]) {
+            height: 30px;
+            padding: 0 5px;
+        }
+
+        span {
+            margin-left: 5px;
+        }
+
+        input, label, span {
+            font-size: 12px;
+        }
+
+        button {
+            height: 30px;
+            border: none;
+            background-color: #00bc77;
+            color: white;
+            cursor: pointer;
+        }
+
+        .error {
+            font-size: 10px;
+            text-align: right;
+            padding: 2px 0px;
+            color: crimson;
+        }
+
+    }
+
+}

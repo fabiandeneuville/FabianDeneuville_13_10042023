@@ -1,7 +1,9 @@
+import SignInForm from "../components/SignInForm";
+
 function SignIn(){
     return (
-        <main>
-
+        <main className="signIn">
+            <SignInForm/>
         </main>
     );
 };
