@@ -27,7 +27,7 @@ function Header(){
             {user ? (
                 <nav className="header__nav">
                     <div className="header__nav__item">
-                        <FontAwesomeIcon icon={faCircleUser} /> <Link to="/user">{user.firstName}</Link>
+                        <FontAwesomeIcon icon={faCircleUser} /> <Link className="header__nav__link" to="/user">{user.firstName}</Link>
                     </div>
                     <div className="header__nav__item">
                         <FontAwesomeIcon icon={faRightFromBracket} /><span className="header__nav__link" onClick={() => logout()}>Sign Out</span>
@@ -37,7 +37,7 @@ function Header(){
             ) : (
                 <nav className="header__nav">
                     <div className="header__nav__item">
-                        <FontAwesomeIcon icon={faCircleUser} /><Link to="/sign-in" className="header__nav__link">Sign In</Link>
+                        <FontAwesomeIcon icon={faCircleUser} /><Link className="header__nav__link" to="/sign-in">Sign In</Link>
                     </div>
                 </nav>
             )}

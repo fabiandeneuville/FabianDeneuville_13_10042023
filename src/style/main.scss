@@ -2,8 +2,13 @@
 @import"./base/fonts";
 @import"./utils/mixins";
 
-@import"./layout/header";
-@import"./layout/footer";
-@import"./layout/layout";
-@import"./layout/signIn";
-@import"./layout/signInForm";
+@import"./layouts/header";
+@import"./layouts/footer";
+@import"./layouts/home";
+@import"./layouts/layout";
+@import"./layouts/signIn";
+@import"./layouts/signInForm";
+@import"./layouts/featuresContainer";
+
+@import"./components/banner";
+@import"./components/feature";

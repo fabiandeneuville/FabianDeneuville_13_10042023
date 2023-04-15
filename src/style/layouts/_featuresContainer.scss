@@ -1,0 +1,10 @@
+.features__container {
+    display: flex;
+    flex-direction: row;
+    padding: 20px 10px;
+
+    @include screen-tablet {
+        flex-direction: column;
+        align-items: center;
+    }
+}
