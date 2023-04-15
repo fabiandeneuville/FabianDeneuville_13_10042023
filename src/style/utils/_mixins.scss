@@ -1,0 +1,3 @@
+@mixin screen-mobile {
+    @media (max-width: 375px) {@content}
+};

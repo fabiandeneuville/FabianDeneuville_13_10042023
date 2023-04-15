@@ -1,16 +1,16 @@
 import createSagaMiddleware from 'redux-saga';
 import { configureStore } from '@reduxjs/toolkit';
 
-import loginReducer from './reducers/loginReducer';
-import loginSaga from './sagas/loginSaga';
+import userReducer from './reducers/user';
+import userSaga from './sagas/user';
 
 const sagaMiddleware = createSagaMiddleware();
 
 const store = configureStore({
-    reducer: loginReducer,
+    reducer: userReducer,
     middleware: [sagaMiddleware]
 });
 
-sagaMiddleware.run(loginSaga);
+sagaMiddleware.run(userSaga);
 
 export default store;
