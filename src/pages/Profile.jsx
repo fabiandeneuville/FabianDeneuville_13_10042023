@@ -19,6 +19,7 @@ function Profile(){
 
     return (
         <main className="main">
+
             {user &&
                 <UserGreeting
                 firstName={user.firstName}
