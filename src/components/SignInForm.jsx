@@ -4,17 +4,29 @@ import * as Yup from "yup";
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import { useSelector, useDispatch } from "react-redux";
+
+import { loginStarted } from '../store/action';
+
 const loginValidationSchema = Yup.object().shape({
     email: Yup.string().required("Required field").email("Invalid Email format !"),
     password: Yup.string().required("Required field"),
     rememberUser: Yup.boolean().required()
 });
 
-function submitForm(values){
-    console.log(values)
-}
-
 function SignInForm(){
+
+    const errorMessage = useSelector(state => state.error);
+
+    const Dispatch = useDispatch();
+    
+    const submitForm = (values) => {
+        const email = values.email;
+        const password = values.password;
+        const rememberUser = values.rememberUser;
+        Dispatch(loginStarted(email, password, rememberUser))
+    }
+
     return (
         <>
             <Formik
@@ -36,6 +48,7 @@ function SignInForm(){
                     setFieldValue
                 }) => (
                     <div className="signInForm__container">
+                        {errorMessage && <div className="apiError">{errorMessage}</div>}
                         <div>
                             <FontAwesomeIcon icon={faCircleUser} />
                         </div>
