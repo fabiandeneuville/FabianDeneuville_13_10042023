@@ -59,7 +59,7 @@ function* logoutUser(){
     localStorage.clear();
     sessionStorage.clear();
     yield put(logoutSuccess());
-    window.location.href = '/sign-in';
+    window.location.href = '/';
 };
 
 export default function* loginSaga(){
