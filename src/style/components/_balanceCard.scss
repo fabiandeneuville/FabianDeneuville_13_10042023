@@ -1,0 +1,22 @@
+.balanceCard {
+    background-color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include screen-mobile{
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    &__info__text {
+        font-size: 13px;
+    }
+
+    &__info__amount {
+        font-size: 28px;
+        font-weight: bold;
+    }
+}

@@ -3,9 +3,11 @@ import { useNavigate } from "react-router";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
-import UserGreeting from "../components/UserGreeting";
+import { balances } from "../mockedDatas/balances";
 
+import UserGreeting from "../components/UserGreeting";
 import ProfileUpdateForm from "../components/ProfileUpdateForm";
+import BalanceCard from "../components/BalanceCard";
 
 function Profile(){
 
@@ -32,6 +34,17 @@ function Profile(){
                     firstName={user.firstName}
                     lastName={user.lastName}
                     />
+                    <div className="balances__container">
+                        {balances.map((item, index) => {
+                            return (
+                                <BalanceCard
+                                key={index}
+                                account={item.account}
+                                balance={item.balance}
+                                />
+                            )
+                        })}
+                    </div>
                 </div>
             }
         </main>
