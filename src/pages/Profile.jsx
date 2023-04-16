@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 
 import UserGreeting from "../components/UserGreeting";
 
+import ProfileUpdateForm from "../components/ProfileUpdateForm";
+
 function Profile(){
 
     const user = useSelector(state => state.user)
@@ -21,10 +23,16 @@ function Profile(){
         <main className="main bg-dark">
 
             {user &&
-                <UserGreeting
-                firstName={user.firstName}
-                lastName={user.lastName}
-                />
+                <div>
+                    <UserGreeting
+                    firstName={user.firstName}
+                    lastName={user.lastName}
+                    />
+                    <ProfileUpdateForm
+                    firstName={user.firstName}
+                    lastName={user.lastName}
+                    />
+                </div>
             }
         </main>
     );

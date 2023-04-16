@@ -25,7 +25,7 @@ function SignInForm(){
         const password = values.password;
         const rememberUser = values.rememberUser;
         Dispatch(loginStarted(email, password, rememberUser))
-    }
+    };
 
     return (
         <>
@@ -45,6 +45,7 @@ function SignInForm(){
                     errors,
                     touched,
                     handleChange,
+                    handleBlur,
                     setFieldValue
                 }) => (
                     <div className="signInForm__container">
@@ -62,12 +63,11 @@ function SignInForm(){
                                 type="email" 
                                 name="email"
                                 onChange={handleChange}
+                                onBlur={handleBlur}
                                 value={values.email}
                                 id="email"
                                 />
-                                <p className="error">
-                                    {errors.email && touched.email && errors.email}
-                                </p>
+                                {errors.email && touched.email && <div className="error">{errors.email}</div>}
                             </div>
                             <div>
                                 <label htmlFor="password">Password</label>
@@ -75,12 +75,11 @@ function SignInForm(){
                                 type="password" 
                                 name="password"
                                 onChange={handleChange}
+                                onBlur={handleBlur}
                                 value={values.password}
                                 id="password"
                                 />
-                                <p className="error">
-                                    {errors.password && touched.password && errors.password}
-                                </p>
+                                {errors.password && touched.password && <div className="error">{errors.password}</div>}
                             </div>
                             <div>
                                 <input 
@@ -91,7 +90,7 @@ function SignInForm(){
                                 />
                                 <span>Remember me</span>
                             </div>
-                            <button type="submit">Sign In</button>
+                            <button className="button" type="submit">Sign In</button>
                         </Form>
                     </div>
                 )} 
