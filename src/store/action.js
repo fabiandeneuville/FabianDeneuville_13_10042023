@@ -6,7 +6,10 @@ import {
     LOGOUT_SUCCESS,
     GET_USER_DATA_STARTED,
     GET_USER_DATA_SUCCESS,
-    GET_USER_DATA_FAILURE
+    GET_USER_DATA_FAILURE,
+    UPDATE_PROFILE_STARTED,
+    UPDATE_PROFILE_SUCCESS,
+    UPDATE_PROFILE_FAILURE
 } from './types';
 
 export const loginStarted = (email, password, rememberUser) => {
@@ -71,6 +74,34 @@ export const getUserDataSuccess = (user) => {
 export const getUserDataFailure = (error) => {
     return {
         type: GET_USER_DATA_FAILURE,
+        payload: {
+            error
+        }
+    };
+};
+
+export const updateProfileStarted = ({firstName, lastName}) => {
+    return {
+        type: UPDATE_PROFILE_STARTED,
+        payload: {
+            firstName,
+            lastName
+        }
+    };
+};
+
+export const updateProfileSuccess = (updatedUser) => {
+    return {
+        type: UPDATE_PROFILE_SUCCESS,
+        payload: {
+            updatedUser
+        }
+    };
+};
+
+export const updateProfileFailure = (error) => {
+    return {
+        type: UPDATE_PROFILE_FAILURE,
         payload: {
             error
         }

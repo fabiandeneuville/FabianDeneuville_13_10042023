@@ -5,7 +5,10 @@ import {
     LOGOUT_SUCCESS,
     GET_USER_DATA_SUCCESS,
     GET_USER_DATA_FAILURE,
-    GET_USER_DATA_STARTED
+    GET_USER_DATA_STARTED,
+    UPDATE_PROFILE_STARTED,
+    UPDATE_PROFILE_SUCCESS,
+    UPDATE_PROFILE_FAILURE
 } from '../types';
 
 const initialState = {
@@ -61,6 +64,24 @@ function user(state = initialState, action){
                 ...state,
                 user: null,
                 error: null,
+                isRequesting: false
+            }
+        case UPDATE_PROFILE_STARTED :
+            return {
+                ...state,
+                isRequesting: true
+            }
+        case UPDATE_PROFILE_SUCCESS :
+            return {
+                ...state,
+                error: null,
+                user: action.payload.updatedUser,
+                isRequesting: false
+            }
+        case UPDATE_PROFILE_FAILURE :
+            return {
+                ...state,
+                error: action.payload.error,
                 isRequesting: false
             }
         default :

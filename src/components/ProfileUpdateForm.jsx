@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
+import { useDispatch, useSelector } from "react-redux";
+
+import { updateProfileStarted } from "../store/action";
 
 const updateValidationSchema = Yup.object().shape({
     firstName: Yup.string().required("Required field"),
@@ -11,14 +14,18 @@ function ProfileUpdateForm(props){
 
     const [showForm, setShowForm] = useState(false);
 
+    const dispatch = useDispatch();
+
+    const errorMessage = useSelector(state => state.error);
+
     const toggleForm = () => {
         setShowForm(!showForm);
-    }
+    };
 
     const submitForm = (values) => {
         const firstName = values.firstName;
         const lastName = values.lastName;
-        console.log({firstName, lastName});
+        dispatch(updateProfileStarted({firstName, lastName}));
     };
 
     return (
@@ -26,7 +33,8 @@ function ProfileUpdateForm(props){
             <button
             className="button"
             onClick={() => toggleForm()}
-                >Edit Name
+            >
+                {showForm ? "Close" : "Edit Name"}
             </button>
             {showForm &&
                 <Formik
@@ -48,6 +56,7 @@ function ProfileUpdateForm(props){
                     resetForm
                 }) => (
                         <Form className="profileUpdateForm__form">
+                            {errorMessage && <div className="apiError">{errorMessage}</div>}
                             <div>
                                 <label htmlFor="firstName">First Name</label>
                                 <input 

@@ -2,22 +2,27 @@ import { takeLatest, call, put } from 'redux-saga/effects';
 import { 
     LOGIN_STARTED, 
     LOGOUT_STARTED,
-    GET_USER_DATA_STARTED
+    GET_USER_DATA_STARTED,
+    UPDATE_PROFILE_STARTED
 } from '../types';
 import { 
     login, 
-    getUserData 
+    getUserData,
+    putUserProfile
 } from '../requests';
 import { 
     loginSuccess, 
     loginFailure, 
     logoutSuccess,
     getUserDataSuccess,
-    getUserDataFailure
+    getUserDataFailure,
+    updateProfileSuccess,
+    updateProfileFailure
 } from '../action';
 import { 
     tokenToLocalStorage, 
-    tokenToSessionStorage 
+    tokenToSessionStorage,
+    getToken
 } from '../../utils';
 
 function* loginUser(action){
@@ -37,9 +42,9 @@ function* loginUser(action){
         window.location.href = '/user';
     }
     catch(error){
-        const message = error.response.data.message;
+        const message = error.response && error.response.data ? error.response.data.message : error.message;
         yield put(loginFailure(message));
-    }
+    };
 };
 
 function* getUser(action){
@@ -50,9 +55,9 @@ function* getUser(action){
         yield put(getUserDataSuccess(user));
     }
     catch(error){
-        const message = error.response.data.message;
+        const message = error.response && error.response.data ? error.response.data.message : error.message;
         yield put(getUserDataFailure(message));
-    }
+    };
 }
 
 function* logoutUser(){
@@ -62,8 +67,27 @@ function* logoutUser(){
     window.location.href = '/';
 };
 
+function* updateProfile(action){
+    const profileData = {
+        firstName: action.payload.firstName,
+        lastName: action.payload.lastName
+    };
+    const token = getToken();
+    try {
+        const apiResponse = yield call(putUserProfile, token, profileData);
+        const updatedUser = apiResponse.data.body;
+        yield put(updateProfileSuccess(updatedUser));
+    }
+    catch(error){
+        console.log(error.message)
+        const message = error.response && error.response.data ? error.response.data.message : error.message;
+        yield put(updateProfileFailure(message));
+    };
+}
+
 export default function* loginSaga(){
     yield takeLatest(LOGIN_STARTED, loginUser);
     yield takeLatest(GET_USER_DATA_STARTED, getUser);
     yield takeLatest(LOGOUT_STARTED, logoutUser);
+    yield takeLatest(UPDATE_PROFILE_STARTED, updateProfile);
 };
