@@ -17,6 +17,7 @@ const loginValidationSchema = Yup.object().shape({
 function SignInForm(){
 
     const errorMessage = useSelector(state => state.error);
+    const isRequesting = useSelector(state => state.isRequesting);
 
     const Dispatch = useDispatch();
     
@@ -90,7 +91,7 @@ function SignInForm(){
                                 />
                                 <span>Remember me</span>
                             </div>
-                            <button className="button" type="submit">Sign In</button>
+                            <button className="button" type="submit" disabled={isRequesting}>Sign In</button>
                         </Form>
                     </div>
                 )} 

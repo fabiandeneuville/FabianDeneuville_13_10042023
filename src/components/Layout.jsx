@@ -10,7 +10,7 @@ import Loader from "./Loader";
 
 function Layout(){
 
-    const isRequestion = useSelector(state => state.isRequesting)
+    const isRequesting = useSelector(state => state.isRequesting);
     
     const dispatch = useDispatch();
 
@@ -23,7 +23,7 @@ function Layout(){
 
     return (
         <div className="layout">
-            {isRequestion &&
+            {isRequesting &&
                 <Loader/>
             }
             <Header/>

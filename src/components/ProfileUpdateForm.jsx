@@ -17,6 +17,7 @@ function ProfileUpdateForm(props){
     const dispatch = useDispatch();
 
     const errorMessage = useSelector(state => state.error);
+    const isRequesting = useSelector(state => state.isRequesting);
 
     const toggleForm = () => {
         setShowForm(!showForm);
@@ -82,10 +83,11 @@ function ProfileUpdateForm(props){
                                 {errors.lastName && touched.lastName && <div className="error">{errors.lastName}</div>}
                             </div>
                             <button className="button" type="submit">Update Profile</button>
-                            <button className="button danger" 
+                            <button 
+                            className="button danger"
+                            disabled={isRequesting}
                             onClick={() => {
                                 resetForm();
-                                toggleForm();
                             }}>Cancel</button>
                         </Form>
                     )} 
