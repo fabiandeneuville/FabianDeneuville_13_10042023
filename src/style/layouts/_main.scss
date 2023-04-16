@@ -1,6 +1,8 @@
 .main {
     min-height: calc(100vh - 120px);
+    position: relative;
+}
+
+.main.bg-dark {
     background-color: #12002b;
-    display: flex;
-    justify-content: center;
 }

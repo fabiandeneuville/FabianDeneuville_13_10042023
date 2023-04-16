@@ -18,7 +18,7 @@ function Profile(){
     });
 
     return (
-        <main className="main">
+        <main className="main bg-dark">
 
             {user &&
                 <UserGreeting
