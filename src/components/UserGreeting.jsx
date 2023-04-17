@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 function UserGreeting(props){
     return (
         <div className="user-greeting">
@@ -8,3 +10,8 @@ function UserGreeting(props){
 };
 
 export default UserGreeting;
+
+UserGreeting.propTypes = {
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired
+};

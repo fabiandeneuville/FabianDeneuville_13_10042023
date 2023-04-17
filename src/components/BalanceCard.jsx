@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 function BalanceCard(props){
     return (
         <div className="balanceCard">
@@ -12,3 +14,14 @@ function BalanceCard(props){
 };
 
 export default BalanceCard;
+
+BalanceCard.propTypes = {
+    account: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        reference: PropTypes.string.isRequired
+    }),
+    balance: PropTypes.shape({
+        amount: PropTypes.number.isRequired,
+        currency: PropTypes.string.isRequired
+    })
+};

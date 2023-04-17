@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
+import PropTypes from 'prop-types';
 
 import { updateProfileStarted } from "../store/action";
 
@@ -98,3 +99,8 @@ function ProfileUpdateForm(props){
 };
 
 export default ProfileUpdateForm;
+
+ProfileUpdateForm.propTypes = {
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired
+};
