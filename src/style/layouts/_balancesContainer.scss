@@ -3,4 +3,10 @@
     flex-direction: column;
     margin: 20px;
     gap: 15px;
+    padding: 0 25px;
+
+    @include screen-tablet {
+        margin: 20px 0px;
+        padding: 0 10px;
+    }
 }
